@@ -10,7 +10,7 @@ class Vehicle:
         Vehicle.VEHICLE_ID += 1
         self.vehicle_id = Vehicle.VEHICLE_ID
         self.entry_time = time.time()
-        self.exit_time = None
+        self._exit_time = None
         self.spot_assign = None
     
     @property
@@ -25,7 +25,7 @@ class Vehicle:
     def exit_time(self, value):
         if value is not None and value < self.entry_time:
             raise ValueError("exit time cannot be earlier than entry time")
-        self.exit_time = value
+        self._exit_time = value
 
 
 class Car(Vehicle):
@@ -37,4 +37,4 @@ class MotorBike(Vehicle):
 
 
 class Truck(Vehicle):
-    VEHICLE_TYPE = VehicleType.t
+    VEHICLE_TYPE = VehicleType.TRUCK

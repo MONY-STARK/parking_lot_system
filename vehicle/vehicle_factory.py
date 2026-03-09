@@ -8,12 +8,9 @@ class VehicleFactory:
         "truck": Truck
     }
 
-    @staticmethod
-    def create_vehicle(vehicle_type: str):
-
+    @classmethod
+    def create_vehicle(cls, vehicle_type: str):
         vehicle_type = vehicle_type.lower()
-
-        if vehicle_type not in VehicleFactory.VEHICLE_MAP:
+        if vehicle_type not in cls.VEHICLE_MAP:
             raise ValueError("Invalid vehicle type")
-
-        return VehicleFactory.VEHICLE_MAP[vehicle_type]()
+        return cls.VEHICLE_MAP[vehicle_type]()

@@ -26,20 +26,20 @@ class ParkingGround:
         return vehicle, ticket
 
     def exit(self, vehicle : Vehicle ):
-        exit_time = self.calculate_exit_time()
+        exit_time = self._calculate_exit_time()
         vehicle.exit_time = exit_time
-        fee = self.calculate_fee(vehicle.entry_time, vehicle.exit_time)
-        self.update_spot(vehicle)
+        fee = self._calculate_fee(vehicle.entry_time, vehicle._exit_time)
+        self._update_spot(vehicle)
         return fee
 
-    def calculate_exit_time(self):
+    def _calculate_exit_time(self):
         return time.time()
 
-    def calculate_fee(self, entry_time, exit_time):
+    def _calculate_fee(self, entry_time, exit_time):
         duration = (exit_time - entry_time) / 3600
-        return 50 * duration
+        return int(50 * duration)
     
-    def update_spot(self, vehicle : Vehicle):
+    def _update_spot(self, vehicle : Vehicle):
         spot = vehicle.spot_assign
 
         if spot == ParkingType.COMPACT:
